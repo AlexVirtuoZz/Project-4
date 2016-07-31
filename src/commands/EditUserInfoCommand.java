@@ -1,5 +1,7 @@
 package commands;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -11,6 +13,12 @@ public class EditUserInfoCommand implements Command{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
+		try {
+			request.setCharacterEncoding("UTF-8");
+		} catch (UnsupportedEncodingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		String name = request.getParameter(GlobalConstants.NAME);
 		String secondName = request.getParameter(GlobalConstants.SECOND_NAME);
 		String thirdName = request.getParameter(GlobalConstants.THIRD_NAME);

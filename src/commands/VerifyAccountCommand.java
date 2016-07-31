@@ -5,6 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 import entities.User;
+import model.ApplicationService;
 import model.UserService;
 import view.GlobalConstants;
 
@@ -25,7 +26,11 @@ public class VerifyAccountCommand implements Command{
 		if (user.isAdmin()){
 			return Constants.ADMIN_PANEL_PAGE;
 		}	
+		ApplicationService applicationService = ApplicationService.getInstance();
+
+		user.setResult(applicationService.readResultByUserId(user.getId()));
 		request.getSession().setAttribute(GlobalConstants.USER, user);
+		request.getSession().setAttribute(GlobalConstants.APPLICATIONS, applicationService.findAllByUserId(user.getId()));
 		return Constants.USER_PANEL_PAGE;
 	}
 

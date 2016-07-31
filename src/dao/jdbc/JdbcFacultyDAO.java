@@ -10,8 +10,6 @@ import java.util.List;
 
 import dao.FacultyDAO;
 import entities.faculty.Faculty;
-import entities.faculty.Subject;
-import view.GlobalConstants;
 
 public class JdbcFacultyDAO implements FacultyDAO {
 
@@ -35,7 +33,27 @@ public class JdbcFacultyDAO implements FacultyDAO {
 
 	@Override
 	public Faculty read(int id) {
-		// TODO Auto-generated method stub
+		Connection connection = null;
+		PreparedStatement statement = null;
+		try {
+			connection = JdbcDAOFactory.getConnection();
+			statement = connection.prepareStatement(Queries.FACULTIES_FIND_BY_ID);
+			statement.setInt(1, id);
+			ResultSet resultSet = statement.executeQuery();
+			resultSet.next();
+			
+			return new Faculty().setId(resultSet.getInt(Constants.DB_ID))
+					.setCapacity(resultSet.getInt(Constants.DB_CAPACITY))
+					.setName(resultSet.getString(Constants.DB_NAME))
+					.setSubjectOne(resultSet.getString(Constants.DB_SUBJECT_ONE))
+					.setSubjectTwo(resultSet.getString(Constants.DB_SUBJECT_TWO))
+					.setSubjectThree(resultSet.getString(Constants.DB_SUBJECT_THREE));
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			JdbcDAOFactory.closeStatement(statement);
+			JdbcDAOFactory.closeConnection(connection);
+		}
 		return null;
 	}
 
@@ -50,9 +68,9 @@ public class JdbcFacultyDAO implements FacultyDAO {
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Faculty tmp = new Faculty().setName(resultSet.getString(Constants.DB_NAME))
-						.setSubjectOne(Subject.valueOf(resultSet.getString(Constants.DB_SUBJECT_ONE).toUpperCase()))
-						.setSubjectTwo(Subject.valueOf(resultSet.getString(Constants.DB_SUBJECT_TWO).toUpperCase()))
-						.setSubjectThree(Subject.valueOf(resultSet.getString(Constants.DB_SUBJECT_THREE).toUpperCase()))
+						.setSubjectOne(resultSet.getString(Constants.DB_SUBJECT_ONE))
+						.setSubjectTwo(resultSet.getString(Constants.DB_SUBJECT_TWO))
+						.setSubjectThree(resultSet.getString(Constants.DB_SUBJECT_THREE))
 						.setCapacity(resultSet.getInt(Constants.DB_CAPACITY))
 						.setId(resultSet.getInt(Constants.DB_ID));
 				faculties.add(tmp);
@@ -65,24 +83,6 @@ public class JdbcFacultyDAO implements FacultyDAO {
 			JdbcDAOFactory.closeConnection(connection);
 		}
 		return null;
-	}
-
-	public boolean checkAvailableLogin(String login){	
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_FIND_BY_LOGIN);
-			statement.setString(1, login);
-			ResultSet resultSet = statement.executeQuery();
-			return (!resultSet.next());
-		} catch (SQLException e) {
-			e.printStackTrace();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
-		return false;
 	}
 	
 }

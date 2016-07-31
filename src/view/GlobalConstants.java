@@ -10,8 +10,10 @@ public interface GlobalConstants {
 	String LOGIN = "login";
 	String PASSWORD = "password";
 	String FACULTY = "faculty";
-	
+	String APPLICATIONS = "applications";
 	String USER = "user";
+	
+	
 	String NULL = "null";
 	String EMPTY = "";
 }

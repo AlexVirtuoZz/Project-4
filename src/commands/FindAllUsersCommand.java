@@ -6,7 +6,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import entities.User;
-import entities.faculty.Subject;
 import model.UserService;
 
 public class FindAllUsersCommand implements Command{

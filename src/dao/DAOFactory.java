@@ -5,6 +5,8 @@ public abstract class DAOFactory {
 	public abstract UserDAO createUserDAO();
 	public abstract FacultyDAO createFacultyDAO();
 	public abstract ApplicationDAO createApplicationDAO();
+	public abstract ResultDAO createResultDAO();
+	public abstract SubjectDAO createSubjectDAO();
 	
 	public static DAOFactory getFactory(){
 		

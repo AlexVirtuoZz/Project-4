@@ -50,7 +50,6 @@
 		<br>
 		<button onclick="location.href = 'registration.jsp'"><fmt:message key="registration" bundle="${bundle }"/></button>
 		<br>
-		<h5><fmt:message key="hintLoginPassword" bundle="${bundle}"/></h5>
 	</center>
 </body>
 </html>

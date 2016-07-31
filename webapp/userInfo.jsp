@@ -44,6 +44,7 @@
 	</tr>
 	</table>
 	</form>
+	<button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
 	</center>
 </body>
 </html>

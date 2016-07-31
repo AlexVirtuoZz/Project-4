@@ -13,6 +13,8 @@ import javax.sql.DataSource;
 import dao.ApplicationDAO;
 import dao.DAOFactory;
 import dao.FacultyDAO;
+import dao.ResultDAO;
+import dao.SubjectDAO;
 import dao.UserDAO;
 
 public class JdbcDAOFactory extends DAOFactory {
@@ -42,6 +44,17 @@ public class JdbcDAOFactory extends DAOFactory {
 		return new JdbcApplicationDAO();
 	}
 	
+	@Override
+	public ResultDAO createResultDAO(){
+		return new JdbcResultDAO();
+	}
+	
+
+	@Override
+	public SubjectDAO createSubjectDAO() {
+		return new JdbcSubjectDAO();
+	}
+	
 	public static Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
 	}
@@ -64,5 +77,6 @@ public class JdbcDAOFactory extends DAOFactory {
 				e.printStackTrace();
 			}
 	}
+
 	
 }

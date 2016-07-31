@@ -22,7 +22,7 @@ public class RegisterUserCommand implements Command{
 			request.setAttribute(Constants.LOG_PASS_ERROR, new Boolean(true));
 			return Constants.REGISTRATION_PAGE;
 		} else if (!userService.checkAvailableLogin(login)){
-			request.setAttribute(Constants.LOGIN_TAKEN, new Boolean(true));
+			request.setAttribute(Constants.LOGIN_TAKEN_ERROR, new Boolean(true));
 			return Constants.REGISTRATION_PAGE;
 		}
 		

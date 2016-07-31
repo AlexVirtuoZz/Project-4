@@ -16,10 +16,19 @@
 	<center>
 		<h2><fmt:message key="userControlPanel" bundle="${bundle }"/></h2><br>
 		
-		<button onclick="location.href = 'userInfo.jsp'"><fmt:message key="editInfo" bundle="${bundle }"/></button><br>
-		<button onclick="location.href = 'userApplications.jsp'"><fmt:message key="editApplications" bundle="${bundle }"/></button><br>
-		<button onclick="location.href = 'userResults.jsp'"><fmt:message key="editResults" bundle="${bundle }"/></button><br>
-		
+		<button onclick="location.href = 'userInfo.jsp'"><fmt:message key="editInfo" bundle="${bundle }"/></button><br><br>
+		<form action="Controller" method="POST">
+			<input type="hidden" name="command" value="VIEW_USER_APPLICATIONS"/>
+			<button type="submit"><fmt:message key="editApplications" bundle="${bundle }"/></button>
+		</form>		<br>
+		<form action="Controller" method="POST">
+			<input type="hidden" name="command" value="VIEW_USER_RESULTS"/>
+			<button type="submit"><fmt:message key="editResults" bundle="${bundle }"/></button>
+		</form><br>
+		<form action="Controller" method="POST">
+			<input type="hidden" name="command" value="QUIT"/>
+			<button type="submit"><fmt:message key="quit" bundle="${bundle }"/></button>
+		</form>
 	</center>
 </body>
 </html>

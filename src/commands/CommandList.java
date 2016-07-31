@@ -9,6 +9,10 @@ public enum CommandList {
 	CHOOSE_LANGUAGE(new ChooseLanguageCommand()),
 	EDIT_USER_INFO(new EditUserInfoCommand()),
 	EDIT_USER_RESULTS(new EditUserResultsCommand()),
+	USER_APPLY( new EditUserApplicationsCommand()),
+	VIEW_USER_RESULTS(new ViewUserResultsCommand()),
+	VIEW_USER_APPLICATIONS(new ViewUserApplicationsCommand()),
+	QUIT(new QuitCommand()),
 	VERIFY_ACCOUNT(new VerifyAccountCommand());
 	
 	private Command command;

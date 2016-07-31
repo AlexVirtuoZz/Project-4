@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 
 import commands.Command;
 import commands.CommandList;
-import entities.faculty.Subject;
+import model.ApplicationService;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
@@ -27,9 +27,4 @@ public class Controller extends HttpServlet {
 		this.doGet(req, resp);
 	}
 	
-	@Override
-	public void init() throws ServletException {
-		this.getServletContext().setAttribute("subjects", Subject.values());
-		super.init();
-	}
 }

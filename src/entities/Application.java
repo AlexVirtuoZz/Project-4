@@ -5,6 +5,24 @@ public class Application {
 	private int userId;
 	private int facultyId;
 	private int result;
+	private boolean accepted;
+	
+	
+	
+	
+	/**
+	 * @return the accepted
+	 */
+	public boolean isAccepted() {
+		return accepted;
+	}
+
+	/**
+	 * @param accepted the accepted to set
+	 */
+	public void setAccepted(boolean accepted) {
+		this.accepted = accepted;
+	}
 
 	/**
 	 * @return the id

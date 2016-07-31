@@ -29,4 +29,9 @@ public class FacultyService {
 		return null;			
 	}
 	
+	public Faculty findById(int id){
+		FacultyDAO facultyDAO = DAOFactory.getFactory().createFacultyDAO();
+		return facultyDAO.read(id);
+	}
+	
 }

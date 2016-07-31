@@ -10,4 +10,10 @@ public interface Constants {
 	String DB_SUBJECT_TWO = "subject_two";
 	String DB_SUBJECT_THREE = "subject_three";
 	String DB_ID = "id";
+	String DB_GRADE = "grade";
+	String DB_USER_ID = "user_id";
+	String DB_SUBJECT_ID = "subject_id";
+	String DB_FACULTY_ID = "faculty_id";
+	String DB_RESULT = "result";
+	String DB_ACCEPTED = "accepted";
 }

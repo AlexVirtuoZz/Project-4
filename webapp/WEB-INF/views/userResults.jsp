@@ -7,7 +7,10 @@
 <c:set var="user" value="${sessionScope.user}" scope="session"/>
 <c:set var="lang" value="${empty lang ? 'en_US' : sessionScope.lang}"
 	scope="session" />
-<c:set var="subjects" value="${subjects}" scope="application"/>
+<c:set var="incorrectMarkError" value="${empty incorrectMarkError ? false : requestScope.incorrectMarkError }"
+	 scope="request"/>
+<c:set var="subjects" value="${subjects}" scope="request"/>
+<c:set var="userResult" value="${user.result}" scope="session"/>
 <fmt:setLocale value="${lang}" />
 <fmt:setBundle basename="localization/messages" var="bundle" />
 <head>
@@ -16,22 +19,27 @@
 </head>
 <body>
 <center>
+<h1><fmt:message key="myGrades" bundle="${bundle}"/></h1>
 <form action="Controller">
 <input type="hidden" name="command" value="EDIT_USER_RESULTS"/>
+<c:if test="${incorrectMarkError eq true }">
+	<font color="red">Incorrect mark value</font>
+</c:if>
 <table>
 	<c:forEach var="sub" items="${subjects}">
 		<tr>
 		<td>
-		<c:out value="${sub.name}"/>
+		<c:out value="${sub}"/>
 		</td>
 		<td>
-		<input type="text" name="${sub.name}"/>
+		<input type="text" name="${sub}" value="${userResult.get(sub) }"/>
 		</td>
 		</tr>
 	</c:forEach>
 </table>
 <input type="submit" value="<fmt:message key="submit" bundle="${bundle }"/>"> 
 </form>
+<button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
 </center>
 </body>
 </html>
