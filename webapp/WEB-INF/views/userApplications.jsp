@@ -21,39 +21,63 @@
 		<h1><fmt:message key="myApplications" bundle="${bundle}"/></h1><br>
 		<table>
 		<tr>
-			<td>
-				faculty
-			</td>
-			<td>
-				result
-			</td>
-			<td>
-				accepted
-			</td>
+			<th>
+				<fmt:message key="facName" bundle="${bundle }"/>
+			</th>
+			<th>
+				<fmt:message key="result" bundle="${bundle }"/>
+			</th>
+			<th>
+				<fmt:message key="accepted" bundle="${bundle }"/>
+			</th>
 		</tr>
 		<c:forEach var="app" items="${applications.entrySet()}">
 			<tr>
-				<td> <c:out value="${app.getKey()}"/> </td>
-				<td> <c:out value="${app.getValue().result}"/> </td>
-				<td> <c:out value="${app.getValue().accepted}"/> </td>
+				<td> <fmt:message key="${app.key}" bundle="${bundle }"/> </td>
+				<td> <c:out value="${app.value.result}"/> </td>
+				<td> <fmt:message key="${app.value.accepted}" bundle="${bundle }"/> </td>
 			</tr>
 			</c:forEach>	
 		</table>		
 		<br>
 		<c:if test="${markNullError eq true }">
-			<font color="red">You cannot apply for  this faculty</font>
+			<font color="red"><fmt:message key="markNullError" bundle="${bundle }"/></font>
 		</c:if>
 		<form action="Controller">
 			<input type="hidden" name="command" value="USER_APPLY"/>		
-			apply on<br>
+			<fmt:message key="applyOn" bundle="${bundle }"/><br>
 			<select name="faculty">
 				<c:forEach var="faculty" items="${faculties}">
-					<option value="${faculty.name}">${faculty.name }</option>
+					<option value="${faculty.name}"><fmt:message key="${faculty.name}" bundle="${bundle }"/></option>
 				</c:forEach>
 			</select>
 			<button type="submit"><fmt:message key="submit" bundle="${bundle }"/></button>
 		</form><br>
 		<button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
+		<h3>*<fmt:message key="info" bundle="${bundle }"/></h3><br>
+		<table>
+		<tr>
+		<th>
+		<fmt:message key="facName" bundle="${bundle }"/>
+		</th>
+		<th>
+		<fmt:message key="subjectOne" bundle="${bundle }"/>
+		</th>
+		<th>
+		<fmt:message key="subjectTwo" bundle="${bundle }"/>
+		</th>
+		<th>
+		<fmt:message key="subjectThree" bundle="${bundle }"/>
+		</th></tr>
+		<c:forEach var="faculty" items="${faculties}">
+		<tr>
+					<td> <fmt:message key="${faculty.name}" bundle="${bundle }"/> </td>
+					<td> <fmt:message key="${faculty.subjectOne}" bundle="${bundle }"/> </td>
+					<td> <fmt:message key="${faculty.subjectTwo}" bundle="${bundle }"/> </td>
+					<td> <fmt:message key="${faculty.subjectThree}" bundle="${bundle }"/> </td>
+		</tr>
+		</c:forEach>
+		</table>
 	</center>
 </body>
 </html>

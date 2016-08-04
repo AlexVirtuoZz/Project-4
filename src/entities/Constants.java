@@ -1,4 +1,4 @@
-package entities.faculty;
+package entities;
 
 interface Constants {
 	// Subjects

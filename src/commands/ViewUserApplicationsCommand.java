@@ -7,13 +7,12 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
+import constants.GlobalConstants;
 import entities.Application;
+import entities.Faculty;
 import entities.User;
-import entities.faculty.Faculty;
 import model.ApplicationService;
 import model.FacultyService;
-import view.GlobalConstants;
 
 public class ViewUserApplicationsCommand implements Command{
 
@@ -33,7 +32,7 @@ public class ViewUserApplicationsCommand implements Command{
 		}
 		
 		request.setAttribute(GlobalConstants.APPLICATIONS, appMap);
-		request.setAttribute(Constants.FACULTIES, facultyService.findAll());
+		request.setAttribute(GlobalConstants.FACULTIES, facultyService.findAll());
 		return Constants.USER_APPLICATIONS;
 	}
 	

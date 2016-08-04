@@ -15,27 +15,21 @@
 <body>
 <center>
 	<h1><fmt:message key="adminControlPanel" bundle="${bundle }"/></h1><br>
-	<p>
+	<%-- <p>
 		<form action = "Controller">
-		<input type = "hidden" name = "command" value="FIND_ALL_USERS"/>
-		<button type="submit"><fmt:message key="editEnrollees" bundle = "${bundle}"/></button>
+		<input type = "hidden" name = "command" value="ADMIN_EDIT_USERS"/>
+		<button type="submit"><fmt:message key="editUsers" bundle = "${bundle}"/></button>
 		</form>
-	</p>
+	</p> --%>
 	<p>
 		<form action = "Controller">
-		<input type = "hidden" name = "command" value="FIND_ACCOUNTS"/>
-		<button type="submit"><fmt:message key="editAccounts" bundle = "${bundle}"/></button>		
-		</form>
-	</p>
-	<p>
-		<form action = "Controller">
-		<input type = "hidden" name = "command" value="FIND_APPLICATIONS"/>
+		<input type = "hidden" name = "command" value="ADMIN_VIEW_APPLICATIONS"/>
 		<button type="submit"><fmt:message key="editApplications" bundle = "${bundle}"/></button>
 		</form>
 	</p>
 	<p>
 		<form action = "Controller">
-		<input type = "hidden" name = "command" value="FIND_FACULTIES"/>
+		<input type = "hidden" name = "command" value="ADMIN_VIEW_FACULTIES"/>
 		<button type="submit"><fmt:message key="editFaculties" bundle = "${bundle}"/></button>
 		</form>
 	</p>

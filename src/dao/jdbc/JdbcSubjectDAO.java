@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.util.LinkedList;
 import java.util.List;
 
+import constants.GlobalConstants;
 import dao.SubjectDAO;
 import entities.User;
-import view.GlobalConstants;
 
 public class JdbcSubjectDAO implements SubjectDAO {
 

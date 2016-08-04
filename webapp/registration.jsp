@@ -16,6 +16,7 @@
 </head>
 <body>
 <center>
+<h1><fmt:message key="registration" bundle="${bundle }"/></h1>
 <form action="./Controller">
 <input type="hidden" name="command" value="REGISTER_USER"/>
 	<table>
@@ -26,23 +27,23 @@
 			<font color="red"><fmt:message key="insertLogin" bundle="${bundle}"/></font><br></td>
 	</c:if>
 	<tr>
-	<td><fmt:message key="login" bundle="${bundle}"/></td>
+	<td><fmt:message key="login" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="login"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="password" bundle="${bundle}"/></td>
+	<td><fmt:message key="password" bundle="${bundle}"/> : </td>
 	<td><input type="password" name="password"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="name" bundle="${bundle}"/></td>
+	<td><fmt:message key="name" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="name"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="secondName" bundle="${bundle}"/></td>
+	<td><fmt:message key="secondName" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="secondName"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="thirdName" bundle="${bundle}"/></td>
+	<td><fmt:message key="thirdName" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="thirdName"/></td>
 	</tr>
 	<tr><td>
@@ -51,6 +52,7 @@
 	</tr>
 	</table>
 	</form>
+	<button onclick="location.href = 'index.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
 	</center>
 </body>
 </html>

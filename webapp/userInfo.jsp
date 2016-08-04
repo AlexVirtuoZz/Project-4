@@ -41,10 +41,14 @@
 	<tr><td>
 	<input type="submit" value="<fmt:message key="submit" bundle="${bundle}"/>"/>
 	</td>
+	<td>
+	</td>
 	</tr>
 	</table>
 	</form>
-	<button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
+		<button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button>
+	
+	<br>
 	</center>
 </body>
 </html>

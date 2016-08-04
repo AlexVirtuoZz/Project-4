@@ -1,4 +1,4 @@
-package entities.faculty;
+package entities;
 
 public class Faculty {
 	private int id;

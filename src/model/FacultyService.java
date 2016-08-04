@@ -6,7 +6,7 @@ import java.util.Map;
 
 import dao.DAOFactory;
 import dao.FacultyDAO;
-import entities.faculty.Faculty;
+import entities.Faculty;
 
 public class FacultyService {
 	private static FacultyService facultyService = new FacultyService();

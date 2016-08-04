@@ -1,4 +1,4 @@
-package view;
+package constants;
 
 public interface GlobalConstants {
 	String NAME = "name";
@@ -12,8 +12,13 @@ public interface GlobalConstants {
 	String FACULTY = "faculty";
 	String APPLICATIONS = "applications";
 	String USER = "user";
-	
-	
+	String FACULTIES = "faculties";
+	String CHOSEN_FACULTY = "chosenFaculty";
+	String SUBJECTS = "subjects";
+	String APPLICATION = "application";
+	String ACCEPT = "accept";
+	String APPLIED_STUDENTS = "appliedStudents";
+	String COMMAND = "command";
 	String NULL = "null";
 	String EMPTY = "";
 }

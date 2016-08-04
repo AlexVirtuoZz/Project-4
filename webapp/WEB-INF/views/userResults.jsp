@@ -15,7 +15,7 @@
 <fmt:setBundle basename="localization/messages" var="bundle" />
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title><fmt:message key="editInfo" bundle="${bundle}"/></title>
+<title><fmt:message key="myGrades" bundle="${bundle}"/></title>
 </head>
 <body>
 <center>
@@ -23,13 +23,13 @@
 <form action="Controller">
 <input type="hidden" name="command" value="EDIT_USER_RESULTS"/>
 <c:if test="${incorrectMarkError eq true }">
-	<font color="red">Incorrect mark value</font>
+	<font color="red"><fmt:message key="incorrectMarkError" bundle="${bundle }"/></font>
 </c:if>
 <table>
 	<c:forEach var="sub" items="${subjects}">
 		<tr>
 		<td>
-		<c:out value="${sub}"/>
+		<fmt:message key="${sub}" bundle="${bundle }"/>
 		</td>
 		<td>
 		<input type="text" name="${sub}" value="${userResult.get(sub) }"/>

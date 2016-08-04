@@ -9,7 +9,7 @@ import javax.servlet.http.*;
 
 import commands.Command;
 import commands.CommandList;
-import model.ApplicationService;
+import constants.GlobalConstants;
 
 @WebServlet("/Controller")
 public class Controller extends HttpServlet {
@@ -17,7 +17,7 @@ public class Controller extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		Command command = CommandList.valueOf((String)req.getParameter("command")).getCommand();
+		Command command = CommandList.valueOf((String)req.getParameter(GlobalConstants.COMMAND)).getCommand();
 		String nextPage = command.execute(req, resp);
 		req.getRequestDispatcher(nextPage).forward(req, resp);	
 	}

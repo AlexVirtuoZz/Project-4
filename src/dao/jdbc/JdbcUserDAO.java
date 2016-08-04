@@ -4,10 +4,10 @@ import java.sql.*;
 import java.util.LinkedList;
 import java.util.List;
 
+import constants.GlobalConstants;
 import dao.UserDAO;
 import entities.User;
 import sun.reflect.generics.reflectiveObjects.NotImplementedException;
-import view.GlobalConstants;
 
 public class JdbcUserDAO implements UserDAO {
 

@@ -42,8 +42,8 @@
 			<c:if test="${verificationError eq true }">
 				<font color="red"><fmt:message key="logPassError" bundle="${bundle}"/><br><br></font>
 			</c:if>
-			<fmt:message key="login" bundle="${bundle}"/><input type="text" name="login" />
-			<fmt:message key="password" bundle="${bundle}"/><input type="password" name="password" />
+			<fmt:message key="login" bundle="${bundle}"/> : <input type="text" name="login" />
+			<fmt:message key="password" bundle="${bundle}"/> : <input type="password" name="password" />
 			 <br> <br>
 			<button type="submit"><fmt:message key="signIn" bundle="${bundle}"/></button>
 		</form>

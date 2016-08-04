@@ -9,7 +9,7 @@ import java.util.LinkedList;
 import java.util.List;
 
 import dao.FacultyDAO;
-import entities.faculty.Faculty;
+import entities.Faculty;
 
 public class JdbcFacultyDAO implements FacultyDAO {
 

@@ -1,6 +1,6 @@
 package dao;
 
-import entities.faculty.Faculty;
+import entities.Faculty;
 
 public interface FacultyDAO extends GenericDAO<Faculty> {
 	

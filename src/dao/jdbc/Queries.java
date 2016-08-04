@@ -19,9 +19,11 @@ interface Queries {
 	String APPLICATIONS_FIND_BY_ID = "SELECT * FROM applications WHERE id = ?";
 	String APPLICATIONS_CREATE = "INSERT INTO applications (user_id, faculty_id, result) VALUES (?, ?, ?)";
 	String APPLICATIONS_DELETE = "DELETE FROM applications WHERE id=?";
+	String APPLICATIONS_ACCEPT = "UPDATE applications SET accepted=1 WHERE id=?";
+	String APPLICATIONS_DECLINE = "UPDATE applications SET accepted=0 WHERE id=?";
 	String APPLICATIONS_FIND_ALL_BY_USER_ID = "SELECT * FROM applications WHERE user_id=?";
 	String APPLICATIONS_UPSERT = "insert into applications (user_id, faculty_id, result) values (?, ?, ?) ON DUPLICATE KEY UPDATE result=values(result)";
-
+	String APPLICATIONS_FIND_APPLIED_STUDENTS = "SELECT users.name, users.second_name, users.third_name, result FROM applications FULL JOIN users ON users.id = user_id WHERE faculty_id=? AND accepted=1 ORDER BY result DESC";
 	
 	// For results
 	String RESULT_FIND_BY_USER_ID = "SELECT grade, subjects.name FROM results RIGHT JOIN subjects ON subject_id = subjects.id WHERE user_id = ?";

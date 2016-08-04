@@ -4,12 +4,17 @@ package commands;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import constants.GlobalConstants;
+import constants.LoggerConstants;
 import entities.User;
 import model.UserService;
-import view.GlobalConstants;
 
 public class RegisterUserCommand implements Command{
+	Logger logger = LogManager.getLogger(AcceptApplicationCommand.class);
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
@@ -29,12 +34,14 @@ public class RegisterUserCommand implements Command{
 		String name = (String) request.getParameter(GlobalConstants.NAME);
 		String secondName = (String) request.getParameter(GlobalConstants.SECOND_NAME);
 		String thirdName = (String) request.getParameter(GlobalConstants.THIRD_NAME); 
-		
+		System.out.println(name);
+
 		User user = new User(name, secondName, thirdName);
 		user.setLogin(login);
-		user.setPassword(password);
-		
+		user.setPassword(DigestUtils.md5Hex(password));
+
 		userService.create(user);
+		logger.info(LoggerConstants.userRegistered+login);
 		request.getSession().setAttribute(GlobalConstants.USER, user);
 		return Constants.WELCOME_PAGE;
 	}

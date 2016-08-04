@@ -7,15 +7,15 @@ public class ChooseLanguageCommand implements Command{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		String chosenLanguage = (String) request.getParameter("chosenLanguage");
+		String chosenLanguage = (String) request.getParameter(Constants.CHOSEN_LANGUAGE);
 		
 		switch (chosenLanguage) {
-			case ("ENG") : request.getSession().setAttribute("lang", "en_US");
+			case (Constants.ENG) : request.getSession().setAttribute(Constants.LANG, Constants.EN_US);
 			break;
-			case ("UKR") : request.getSession().setAttribute("lang", "uk_UA");
+			case (Constants.URK) : request.getSession().setAttribute(Constants.LANG, Constants.UK_UA);
 			break;
 		}
-		return "index.jsp";
+		return Constants.WELCOME_PAGE;
 	}
 
 }
