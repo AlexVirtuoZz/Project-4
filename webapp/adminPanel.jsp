@@ -30,11 +30,14 @@
 	<p>
 		<form action = "Controller">
 		<input type = "hidden" name = "command" value="ADMIN_VIEW_FACULTIES"/>
-		<button type="submit"><fmt:message key="editFaculties" bundle = "${bundle}"/></button>
+		<button type="submit"><fmt:message key="viewFaculties" bundle = "${bundle}"/></button>
 		</form>
 	</p>
 	<p>
-		<button onclick="location.href = 'index.jsp'"><fmt:message key="quit" bundle="${bundle }"/></button>
+		<form action="Controller" method="POST">
+			<input type="hidden" name="command" value="QUIT"/>
+			<button type="submit"><fmt:message key="quit" bundle="${bundle }"/></button>
+		</form>	
 	</p>
 </center>
 </body>

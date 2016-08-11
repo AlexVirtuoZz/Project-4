@@ -24,7 +24,7 @@
 			<font color="red"><fmt:message key="loginNotAvailable" bundle="${bundle}"/></font><br></td>
 	</c:if>
 	<c:if test="${logPassError eq true }"><td>
-			<font color="red"><fmt:message key="insertLogin" bundle="${bundle}"/></font><br></td>
+			<font color="red"><fmt:message key="requiredFieldsError" bundle="${bundle}"/></font><br></td>
 	</c:if>
 	<tr>
 	<td><fmt:message key="login" bundle="${bundle}"/> : </td>

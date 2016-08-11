@@ -7,7 +7,7 @@
   
    <filter>
   <filter-name>Encoding</filter-name>
-   <filter-class>filter.EncodingFilter</filter-class>
+   <filter-class>com.epam.filter.EncodingFilter</filter-class>
   </filter>
   <filter-mapping>
     <filter-name>Encoding</filter-name>

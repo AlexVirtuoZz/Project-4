@@ -50,7 +50,7 @@
 		<button type="submit"><fmt:message key="back" bundle = "${bundle}"/></button>
 		</form>
 		<h2><fmt:message key="studentsWhoApplied" bundle="${bundle }"/></h2>
-		<table>
+		<table cellpadding="5">
 		<thead>
 		<tr>
 			<th> <fmt:message key="name" bundle="${bundle }"/> </th>
@@ -61,7 +61,7 @@
 		</thead>
 		<tr>
 			<c:if test="${counter < faculty.capacity}">
-				<td><font color="blue">Pass</font></td>
+				<td><font color="blue"><fmt:message key="pass" bundle="${bundle }"/></font></td>
 				<c:set var="counter" value="${counter+1 }"/>
 			</c:if>
 			</tr>
@@ -73,7 +73,7 @@
 			<td> <c:out value="${appliedStudent.getKey().thirdName}"/> </td>
 			<td> <c:out value="${appliedStudent.getValue()}"/> </td>
 			<c:if test="${counter < faculty.capacity}">
-				<td><font color="blue">Pass</font></td>
+				<td><font color="blue"><fmt:message key="pass" bundle="${bundle }"/></font></td>
 				<c:set var="counter" value="${counter+1 }"/>
 			</c:if>
 			</tr>

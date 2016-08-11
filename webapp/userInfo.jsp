@@ -5,6 +5,8 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <c:set var="user" value="${sessionScope.user}" scope="session"/>
+<c:set var="passMismatchError" value="${empty passMismatchError ? false : passMismatchError}" scope="request"/> 	
+
 <c:set var="lang" value="${empty lang ? 'en_US' : sessionScope.lang}"
 	scope="session" />
 <fmt:setLocale value="${lang}" />
@@ -17,26 +19,33 @@
 <center>
 <form action="Controller">
 <input type="hidden" name="command" value="EDIT_USER_INFO"/>
+<c:if test="${passMismatchError eq true }">
+	<font color="red"><fmt:message key="passMismatchError" bundle="${bundle }"/></font>
+</c:if>
 	<table>
 	<tr>
-	<td><fmt:message key="name" bundle="${bundle}"/></td>
+	<td><fmt:message key="name" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="name" value="${user.name}"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="secondName" bundle="${bundle}"/></td>
+	<td><fmt:message key="secondName" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="secondName" value="${user.secondName}"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="thirdName" bundle="${bundle}"/></td>
+	<td><fmt:message key="thirdName" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="thirdName" value="${user.thirdName}"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="login" bundle="${bundle}"/></td>
+	<td><fmt:message key="login" bundle="${bundle}"/> : </td>
 	<td><input type="text" name="login" value="${user.login }"/></td>
 	</tr>
 	<tr>
-	<td><fmt:message key="password" bundle="${bundle}"/></td>
-	<td><input type="password" name="password" value="${user.password }"/></td>
+	<td><fmt:message key="password" bundle="${bundle}"/> : </td>
+	<td><input type="password" name="password" /></td>
+	</tr>
+	<tr>
+	<td><fmt:message key="newPassword" bundle="${bundle}"/> : </td>
+	<td><input type="password" name="newPassword"/></td>
 	</tr>
 	<tr><td>
 	<input type="submit" value="<fmt:message key="submit" bundle="${bundle}"/>"/>

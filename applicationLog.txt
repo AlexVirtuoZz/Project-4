@@ -1,0 +1,72 @@
+23:20:58.192 [http-nio-8080-exec-6] INFO  commands.AcceptApplicationCommand - User created. login: adm
+23:21:04.294 [http-nio-8080-exec-7] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:25:15.096 [http-nio-8080-exec-10] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:27:41.983 [http-nio-8080-exec-3] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:45:47.798 [http-nio-8080-exec-2] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:45:59.393 [http-nio-8080-exec-5] INFO  commands.AcceptApplicationCommand - User disconnected. id: 11
+23:46:08.555 [http-nio-8080-exec-8] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:47:50.491 [http-nio-8080-exec-2] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:48:04.159 [http-nio-8080-exec-6] INFO  commands.AcceptApplicationCommand - User disconnected. id: 11
+23:48:07.517 [http-nio-8080-exec-7] INFO  commands.VerifyAccountCommand - User connected. id: 11
+23:49:03.453 [http-nio-8080-exec-1] INFO  commands.AcceptApplicationCommand - User disconnected. id: 11
+23:49:07.181 [http-nio-8080-exec-2] INFO  commands.VerifyAccountCommand - Admin connected. id: 11
+23:50:10.024 [http-nio-8080-exec-6] INFO  commands.VerifyAccountCommand - User connected. id: 10
+23:53:20.684 [http-nio-8080-exec-3] INFO  commands.VerifyAccountCommand - Admin connected. id: 11
+23:53:24.357 [http-nio-8080-exec-5] INFO  commands.VerifyAccountCommand - User connected. id: 10
+23:53:40.035 [http-nio-8080-exec-8] INFO  commands.EditUserResultsCommand - l user's changed marks
+23:54:45.103 [http-nio-8080-exec-1] INFO  commands.AcceptApplicationCommand - User disconnected. id: 10
+23:54:55.253 [http-nio-8080-exec-3] INFO  commands.VerifyAccountCommand - User connected. id: 10
+23:55:16.763 [http-nio-8080-exec-9] INFO  commands.AcceptApplicationCommand - User disconnected. id: 10
+23:57:19.599 [http-nio-8080-exec-3] INFO  commands.VerifyAccountCommand - User connected. id: 10
+23:59:19.183 [http-nio-8080-exec-2] INFO  commands.VerifyAccountCommand - User connected. id: 10
+00:00:46.144 [http-nio-8080-exec-6] INFO  commands.VerifyAccountCommand - User connected. id: 10
+00:01:05.824 [http-nio-8080-exec-10] INFO  commands.AcceptApplicationCommand - User disconnected. id: 10
+00:01:08.426 [http-nio-8080-exec-1] INFO  commands.VerifyAccountCommand - User connected. id: 10
+00:01:10.033 [http-nio-8080-exec-2] INFO  commands.AcceptApplicationCommand - User disconnected. id: 10
+17:18:50.100 [http-nio-8080-exec-2] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:20:44.119 [http-nio-8080-exec-3] INFO  com.epam.commands.AcceptApplicationCommand - User created. login: o
+17:20:49.703 [http-nio-8080-exec-4] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 12
+17:20:51.666 [http-nio-8080-exec-5] INFO  com.epam.commands.AcceptApplicationCommand - User disconnected. id: 12
+17:20:54.235 [http-nio-8080-exec-6] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 12
+17:21:13.784 [http-nio-8080-exec-3] INFO  com.epam.commands.AcceptApplicationCommand - User disconnected. id: 12
+17:36:22.794 [http-nio-8080-exec-3] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:36:29.684 [http-nio-8080-exec-5] INFO  com.epam.commands.AcceptApplicationCommand - 9Application has been accepted. id: 
+17:36:58.954 [http-nio-8080-exec-9] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:40:00.075 [http-nio-8080-exec-3] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:50:10.728 [http-nio-8080-exec-2] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:50:58.381 [http-nio-8080-exec-7] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:51:07.582 [http-nio-8080-exec-9] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:52:19.712 [http-nio-8080-exec-3] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+17:52:25.310 [http-nio-8080-exec-4] INFO  com.epam.commands.AcceptApplicationCommand - Admin disconnected. id: 11
+17:53:18.940 [http-nio-8080-exec-7] INFO  com.epam.commands.AcceptApplicationCommand - User created. login: j
+17:58:14.981 [http-nio-8080-exec-9] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 13
+17:58:16.919 [http-nio-8080-exec-5] INFO  com.epam.commands.AcceptApplicationCommand - User disconnected. id: 13
+18:40:35.590 [http-nio-8080-exec-3] INFO  com.epam.commands.AcceptApplicationCommand - User created. login: b
+18:40:41.132 [http-nio-8080-exec-5] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 14
+18:41:14.648 [http-nio-8080-exec-2] INFO  com.epam.commands.EditUserResultsCommand - User's changed marks. id: 14
+18:41:21.962 [http-nio-8080-exec-3] INFO  com.epam.commands.EditUserResultsCommand - User's changed marks. id: 14
+18:41:31.292 [http-nio-8080-exec-9] INFO  com.epam.commands.AcceptApplicationCommand - User disconnected. id: 14
+18:41:33.969 [http-nio-8080-exec-10] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+18:41:56.405 [http-nio-8080-exec-8] INFO  com.epam.commands.AcceptApplicationCommand - 1Application has been accepted. id: 
+18:41:57.033 [http-nio-8080-exec-9] INFO  com.epam.commands.AcceptApplicationCommand - 2Application has been accepted. id: 
+18:41:57.550 [http-nio-8080-exec-10] INFO  com.epam.commands.AcceptApplicationCommand - 3Application has been accepted. id: 
+18:41:57.979 [http-nio-8080-exec-1] INFO  com.epam.commands.AcceptApplicationCommand - 4Application has been accepted. id: 
+18:41:59.698 [http-nio-8080-exec-2] INFO  com.epam.commands.AcceptApplicationCommand - 3Application has been canceled. id: 
+18:42:01.380 [http-nio-8080-exec-4] INFO  com.epam.commands.AcceptApplicationCommand - 3Application has been accepted. id: 
+18:42:02.762 [http-nio-8080-exec-3] INFO  com.epam.commands.AcceptApplicationCommand - 5Application has been accepted. id: 
+18:42:03.355 [http-nio-8080-exec-5] INFO  com.epam.commands.AcceptApplicationCommand - 6Application has been accepted. id: 
+18:42:04.203 [http-nio-8080-exec-6] INFO  com.epam.commands.AcceptApplicationCommand - 7Application has been accepted. id: 
+18:42:06.520 [http-nio-8080-exec-7] INFO  com.epam.commands.AcceptApplicationCommand - 8Application has been accepted. id: 
+18:42:09.043 [http-nio-8080-exec-8] INFO  com.epam.commands.AcceptApplicationCommand - 10Application has been accepted. id: 
+18:42:10.641 [http-nio-8080-exec-9] INFO  com.epam.commands.AcceptApplicationCommand - 11Application has been accepted. id: 
+18:46:39.750 [http-nio-8080-exec-7] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 14
+18:48:55.669 [http-nio-8080-exec-3] INFO  com.epam.commands.VerifyAccountCommand - User connected. id: 14
+18:49:08.583 [http-nio-8080-exec-8] INFO  com.epam.commands.EditUserResultsCommand - User's changed marks. id: 14
+18:49:42.016 [http-nio-8080-exec-5] INFO  com.epam.commands.EditUserResultsCommand - User's changed marks. id: 14
+19:09:17.931 [http-nio-8080-exec-10] INFO  com.epam.commands.AcceptApplicationCommand - User disconnected. id: 14
+19:09:20.717 [http-nio-8080-exec-1] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+19:09:22.202 [http-nio-8080-exec-2] INFO  com.epam.commands.AcceptApplicationCommand - Admin disconnected. id: 11
+19:09:28.990 [http-nio-8080-exec-5] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+19:12:11.861 [http-nio-8080-exec-5] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
+19:12:14.324 [http-nio-8080-exec-6] INFO  com.epam.commands.AcceptApplicationCommand - Admin disconnected. id: 11
+19:12:36.685 [http-nio-8080-exec-9] INFO  com.epam.commands.VerifyAccountCommand - Admin connected. id: 11
