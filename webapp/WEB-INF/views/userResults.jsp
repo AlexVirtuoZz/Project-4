@@ -9,6 +9,7 @@
 	scope="session" />
 <c:set var="incorrectMarkError" value="${empty incorrectMarkError ? false : requestScope.incorrectMarkError }"
 	 scope="request"/>
+<c:set var="certificateMarkError" value="${empty certificateMarkError ? false : requestScope.certificateMarkError}" scope="request" />	 
 <c:set var="subjects" value="${subjects}" scope="request"/>
 <c:set var="userResult" value="${user.result}" scope="session"/>
 <fmt:setLocale value="${lang}" />
@@ -22,9 +23,14 @@
 <h1><fmt:message key="myGrades" bundle="${bundle}"/></h1>
 <form action="Controller">
 <input type="hidden" name="command" value="EDIT_USER_RESULTS"/>
-<c:if test="${incorrectMarkError eq true }">
+<c:choose>
+<c:when test="${incorrectMarkError eq true }">
 	<font color="red"><fmt:message key="incorrectMarkError" bundle="${bundle }"/></font>
-</c:if>
+</c:when>
+<c:when test="${certificateMarkError eq true }">
+	<font color="red"><fmt:message key="certificateMarkError" bundle="${bundle }"/></font>
+</c:when>
+</c:choose>
 <table>
 	<c:forEach var="sub" items="${subjects}">
 		<tr>
@@ -38,7 +44,7 @@
 	</c:forEach>
 </table>
 <input type="submit" value="<fmt:message key="submit" bundle="${bundle }"/>"> 
-</form>
+</form><br>
 <button onclick="location.href = 'userPanel.jsp'"><fmt:message key="back" bundle="${bundle }"/></button><br>
 </center>
 </body>

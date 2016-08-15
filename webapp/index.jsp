@@ -32,12 +32,14 @@
 
 	<center>
 		<h1>
-			<fmt:message key="enterLoginPassword" bundle="${bundle}" />
+		<fmt:message key="selectionCommittee" bundle="${bundle}" />
 		</h1>
-
 		<br>
 		
-		<form action="Controller" method="POST">
+		<h3>
+		<fmt:message key="enterLoginPassword" bundle="${bundle}" />
+		</h3>
+		<form action="Controller" method="get">
 			<input type="hidden" name="command" value="VERIFY_ACCOUNT" />
 			<c:if test="${verificationError eq true }">
 				<font color="red"><fmt:message key="logPassError" bundle="${bundle}"/><br><br></font>

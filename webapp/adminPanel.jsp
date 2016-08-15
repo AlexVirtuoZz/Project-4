@@ -15,12 +15,12 @@
 <body>
 <center>
 	<h1><fmt:message key="adminControlPanel" bundle="${bundle }"/></h1><br>
-	<%-- <p>
+	<p>
 		<form action = "Controller">
-		<input type = "hidden" name = "command" value="ADMIN_EDIT_USERS"/>
+		<input type = "hidden" name = "command" value="ADMIN_VIEW_USERS"/>
 		<button type="submit"><fmt:message key="editUsers" bundle = "${bundle}"/></button>
 		</form>
-	</p> --%>
+	</p>
 	<p>
 		<form action = "Controller">
 		<input type = "hidden" name = "command" value="ADMIN_VIEW_APPLICATIONS"/>
