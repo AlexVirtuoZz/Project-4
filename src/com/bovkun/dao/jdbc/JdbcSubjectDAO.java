@@ -48,12 +48,10 @@ public class JdbcSubjectDAO implements SubjectDAO {
 
 	@Override
 	public List<String> findAll() {
-		Connection connection = null;
-		PreparedStatement statement = null;
 		List<String> subjects = new LinkedList<>();
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.SUBJECT_FIND_ALL);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.SUBJECT_FIND_ALL);) {
+			
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				subjects.add(resultSet.getString(Constants.DB_NAME));
@@ -61,10 +59,7 @@ public class JdbcSubjectDAO implements SubjectDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 		return subjects;
 	}
 

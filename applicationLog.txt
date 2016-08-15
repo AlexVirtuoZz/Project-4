@@ -406,3 +406,57 @@ java.sql.SQLException: Column 'secondName' not found.
 09:55:34.236 [http-nio-8080-exec-5] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were given to user. id: 4
 09:55:35.204 [http-nio-8080-exec-6] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were given to user. id: 5
 09:56:29.716 [http-nio-8080-exec-9] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were given to user. id: 5
+15:30:35.770 [http-nio-8080-exec-4] INFO  com.bovkun.commands.VerifyAccountCommand - Admin connected. id: 1
+15:30:37.564 [http-nio-8080-exec-5] INFO  com.bovkun.commands.QuitCommand - Admin disconnected. id: 1
+15:50:22.098 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+15:52:04.374 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+15:54:36.233 [http-nio-8080-exec-4] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+15:54:36.233 [http-nio-8080-exec-3] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:19:27.973 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:23:45.538 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:27:30.846 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:31:30.043 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:32:51.904 [http-nio-8080-exec-3] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:34:52.821 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:35:08.744 [http-nio-8080-exec-4] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were removed from user. id: 1
+16:35:09.648 [http-nio-8080-exec-5] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were given to user. id: 1
+16:41:28.052 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:42:34.766 [http-nio-8080-exec-3] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:43:28.616 [http-nio-8080-exec-6] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+16:43:52.784 [http-nio-8080-exec-8] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:47:27.026 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:48:50.911 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:48:59.569 [http-nio-8080-exec-5] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+16:49:01.691 [http-nio-8080-exec-6] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:49:45.224 [http-nio-8080-exec-1] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+16:49:53.705 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+16:52:46.030 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:00:14.689 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:01:06.910 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:02:53.505 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:04:09.355 [http-nio-8080-exec-5] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:04:20.667 [http-nio-8080-exec-7] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:04:32.262 [http-nio-8080-exec-8] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:04:59.007 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:05:54.852 [http-nio-8080-exec-5] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:05:54.862 [http-nio-8080-exec-5] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were removed from user. id: 1
+17:07:03.255 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:07:23.944 [http-nio-8080-exec-5] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:09:10.134 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:24:09.785 [http-nio-8080-exec-2] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:24:44.772 [http-nio-8080-exec-5] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 1
+17:24:46.201 [http-nio-8080-exec-6] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 1
+17:24:50.180 [http-nio-8080-exec-7] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:24:58.449 [http-nio-8080-exec-9] INFO  com.bovkun.commands.EditUserResultsCommand - User's changed marks. id: 3
+17:25:00.146 [http-nio-8080-exec-10] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:25:02.150 [http-nio-8080-exec-1] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:25:15.906 [http-nio-8080-exec-10] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:25:18.095 [http-nio-8080-exec-11] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 1
+17:25:35.754 [http-nio-8080-exec-12] INFO  com.bovkun.commands.AdminSetAdminCommand - Admin rights were given to user. id: 1
+17:26:10.374 [http-nio-8080-exec-3] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:26:13.399 [http-nio-8080-exec-4] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:26:15.605 [http-nio-8080-exec-5] INFO  com.bovkun.commands.VerifyAccountCommand - Admin connected. id: 1
+17:31:00.955 [http-nio-8080-exec-3] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:31:26.267 [http-nio-8080-exec-10] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3
+17:31:29.566 [http-nio-8080-exec-13] INFO  com.bovkun.commands.VerifyAccountCommand - User connected. id: 3
+17:31:39.721 [http-nio-8080-exec-1] INFO  com.bovkun.commands.QuitCommand - User disconnected. id: 3

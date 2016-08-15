@@ -43,11 +43,10 @@ public class JdbcFacultyDAO implements FacultyDAO {
 
 	@Override
 	public Faculty read(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.FACULTIES_FIND_BY_ID);
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.FACULTIES_FIND_BY_ID);) {
+			
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
@@ -61,20 +60,16 @@ public class JdbcFacultyDAO implements FacultyDAO {
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 	@Override
 	public List<Faculty> findAll() {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		List<Faculty> faculties = new LinkedList<>();
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.FACULTIES_FIND_ALL);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.FACULTIES_FIND_ALL);) {
+			
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				Faculty tmp = new Faculty().setName(resultSet.getString(Constants.DB_NAME))
@@ -88,20 +83,16 @@ public class JdbcFacultyDAO implements FacultyDAO {
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 		return faculties;
 	}
 
 	@Override
 	public Faculty findByName(String name) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.FACULTIES_FIND_BY_NAME);
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.FACULTIES_FIND_BY_NAME);) {
+			
 			statement.setString(1, name);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
@@ -115,9 +106,6 @@ public class JdbcFacultyDAO implements FacultyDAO {
 		} catch (SQLException e) {
 			logger.log(Level.ERROR, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 	}
 	

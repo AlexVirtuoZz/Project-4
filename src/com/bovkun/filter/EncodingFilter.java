@@ -14,7 +14,6 @@ import javax.servlet.annotation.WebFilter;
  * Used to encode request and responce into UTF-8 encoding
  * @see #doFilter(ServletRequest, ServletResponse, FilterChain)
  */
-@WebFilter("/EncodingFilter")
 public class EncodingFilter implements Filter {
 
     /**

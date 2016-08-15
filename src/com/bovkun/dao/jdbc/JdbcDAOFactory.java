@@ -2,7 +2,6 @@ package com.bovkun.dao.jdbc;
 
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 
 import javax.naming.Context;
@@ -78,29 +77,5 @@ public class JdbcDAOFactory extends DAOFactory {
 	public static Connection getConnection() throws SQLException{
 		return dataSource.getConnection();
 	}
-	/**
-	 * A method to close connection
-	 * @param connection - specified connection
-	 */
-	public static void closeConnection(Connection connection){
-		if (connection != null)
-			try {
-				connection.close();
-			} catch (SQLException e) {
-				logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
-			}
-	}
-	/**
-	 * A method to close statement
-	 * @param statement - specified statement
-	 */
-	public static void closeStatement(Statement statement){
-		if (statement != null)
-			try {
-				statement.close();
-			} catch (SQLException e) {
-				logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
-			}
-	}	
 	
 }

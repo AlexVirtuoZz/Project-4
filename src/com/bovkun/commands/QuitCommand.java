@@ -24,17 +24,15 @@ public class QuitCommand implements Command{
 
 	@Override
 	public String execute(HttpServletRequest request, HttpServletResponse response) {
-		Enumeration<String> sessionAttNames = request.getSession().getAttributeNames();
+		
 		User user = (User) request.getSession().getAttribute(GlobalConstants.USER);
 		
 		if (user.isAdmin())
 			logger.info(LoggerConstants.ADMIN_DISCONNECTED+user.getId());
 		else 
 			logger.info(LoggerConstants.USER_DISCONNECTED+user.getId());
-		while(sessionAttNames.hasMoreElements()){
-			request.getSession().removeAttribute(sessionAttNames.nextElement());
-		}
 		
+		request.getSession().invalidate();
 		return Constants.WELCOME_PAGE;
 	}
 

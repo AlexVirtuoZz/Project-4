@@ -29,23 +29,25 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 	
 	@Override
 	public void create(Application application) {		
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_UPSERT);
-			statement.setInt(1, application.getUserId());
-			statement.setInt(2, application.getFacultyId());
-			statement.setInt(3, application.getResult());
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_UPSERT);) {
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, application.getUserId());
+				statement.setInt(2, application.getFacultyId());
+				statement.setInt(3, application.getResult());
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e){
+				connection.rollback();
+				throw new SQLException();
+			}
+			
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
-		
+		} 
 	}
 
 	@Override
@@ -56,30 +58,31 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 
 	@Override
 	public boolean delete(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_DELETE);
-			statement.setInt(1, id);
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_DELETE);){
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, id);
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e) {
+				connection.rollback();
+				throw new SQLException();
+			}
 			return true;
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 	}
 
 	@Override
 	public Application read(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_BY_ID);
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_BY_ID);) {
+			
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
@@ -92,20 +95,16 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 	@Override
 	public List<Application> findAll() {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		List<Application> applications = new LinkedList<>();
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_ALL);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_ALL);) {
+			
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()){
 			Application tmp = new Application();
@@ -119,22 +118,18 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 		return applications;
 	}
 	
 	 
 	@Override
 	public List<Application> findAllByUserId(int userId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		List<Application> applications = new LinkedList<>();
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_ALL_BY_USER_ID);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_ALL_BY_USER_ID);) {
+			
 			statement.setInt(1, userId);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()){
@@ -149,59 +144,57 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 		return applications;
 	}
 
 	@Override
 	public void acceptApplication(int appId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_ACCEPT);
-			statement.setInt(1, appId);
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_ACCEPT);) {
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, appId);
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e){
+				connection.rollback();
+				throw new SQLException();
+			}
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
-		
 	}
 
 	@Override
 	public void cancelApplication(int appId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_DECLINE);
-			statement.setInt(1, appId);
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_DECLINE);) {
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, appId);
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e){
+				connection.rollback();
+				throw new SQLException();
+			}
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
-		
 	}
 
 	@Override
 	public Map<User, Integer> findAppliedStudents(int facultyId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		Map<User, Integer> appliedStudents = new LinkedHashMap<>();
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_APPLIED_STUDENTS);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.APPLICATIONS_FIND_APPLIED_STUDENTS);) {
+			
 			statement.setInt(1, facultyId);
 			ResultSet resultSet = statement.executeQuery();
 			while(resultSet.next()){
@@ -214,10 +207,7 @@ public class JdbcApplicationDAO implements ApplicationDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 }

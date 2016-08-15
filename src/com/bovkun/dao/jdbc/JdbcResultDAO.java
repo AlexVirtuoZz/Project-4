@@ -57,13 +57,11 @@ public class JdbcResultDAO implements ResultDAO{
 
 	@Override
 	public Map<String, Integer> readByUserId(int userId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
 		
 		HashMap<String, Integer> grades = new HashMap<>();
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.RESULT_FIND_BY_USER_ID);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.RESULT_FIND_BY_USER_ID);) {
+			
 			statement.setInt(1, userId);
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
@@ -73,32 +71,31 @@ public class JdbcResultDAO implements ResultDAO{
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 		return grades;
 	}
 
 	@Override
 	public void update(Map<String, Integer> grades, int userId) {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		for (Entry<String, Integer> grade : grades.entrySet()){
-			try {
-				connection = JdbcDAOFactory.getConnection();
-				statement = connection.prepareStatement(Queries.RESULT_UPSERT);
-				statement.setString(1, grade.getKey());
-				statement.setInt(2, userId);
-				statement.setInt(3, grade.getValue());
-				statement.executeUpdate();
+			try (Connection connection = JdbcDAOFactory.getConnection();
+				PreparedStatement statement = connection.prepareStatement(Queries.RESULT_UPSERT);) {
+				connection.setAutoCommit(false);
+				try {
+					statement.setString(1, grade.getKey());
+					statement.setInt(2, userId);
+					statement.setInt(3, grade.getValue());
+					statement.executeUpdate();
+					connection.commit();
+				} catch (SQLException e) {
+					connection.rollback();
+					throw new SQLException();
+				}
 			} catch (SQLException e) {
 				logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 				throw new RuntimeException();
-			} finally {
-				JdbcDAOFactory.closeStatement(statement);
-				JdbcDAOFactory.closeConnection(connection);
-			}
+			} 
 		}
 	}
 

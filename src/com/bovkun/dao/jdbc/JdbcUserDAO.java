@@ -24,47 +24,51 @@ public class JdbcUserDAO implements UserDAO {
 	public void create(User user) {
 		if (!checkAvailableLogin(user.getLogin()))
 			return;
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_CREATE);
-			statement.setString(1, user.getName());
-			statement.setString(2, user.getSecondName());
-			statement.setString(3, user.getThirdName());
-			statement.setString(4, user.getLogin());
-			statement.setString(5, user.getPassword());
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_CREATE);) {
+			connection.setAutoCommit(false);
+			try {
+				statement.setString(1, user.getName());
+				statement.setString(2, user.getSecondName());
+				statement.setString(3, user.getThirdName());
+				statement.setString(4, user.getLogin());
+				statement.setString(5, user.getPassword());
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e) {
+				connection.rollback();
+				throw new SQLException();
+			}			
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 	@Override
 	public boolean update(User user) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try { 
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_UPDATE);
-			statement.setString(1, user.getName());
-			statement.setString(2, user.getSecondName());
-			statement.setString(3, user.getThirdName());
-			statement.setString(4, user.getLogin());
-			statement.setString(5, user.getPassword());
-			statement.setInt(6, user.getId());
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_UPDATE);) { 
+			connection.setAutoCommit(false);
+			try { 
+				statement.setString(1, user.getName());
+				statement.setString(2, user.getSecondName());
+				statement.setString(3, user.getThirdName());
+				statement.setString(4, user.getLogin());
+				statement.setString(5, user.getPassword());
+				statement.setInt(6, user.getId());
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e) {
+				connection.rollback();
+				throw new SQLException();
+			}
 			return true;
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 	}
 
@@ -76,11 +80,10 @@ public class JdbcUserDAO implements UserDAO {
 
 	@Override
 	public User read(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try{
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_FIND_BY_ID);
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_FIND_BY_ID);) {
+			
 			statement.setInt(1, id);
 			ResultSet resultSet = statement.executeQuery();
 			resultSet.next();
@@ -90,20 +93,15 @@ public class JdbcUserDAO implements UserDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 	@Override
 	public List<User> findAll() {
-		Connection connection = null;
-		PreparedStatement statement = null;
 		List<User> users = new LinkedList<>();
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_FIND_ALL);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_FIND_ALL);) {
+			
 			ResultSet resultSet = statement.executeQuery();
 			while (resultSet.next()) {
 				User tmp = new User(resultSet.getString(Constants.DB_NAME),
@@ -119,38 +117,30 @@ public class JdbcUserDAO implements UserDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 	}
 
 	public boolean checkAvailableLogin(String login){	
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_FIND_BY_LOGIN);
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_FIND_BY_LOGIN);) {
+			
 			statement.setString(1, login);
 			ResultSet resultSet = statement.executeQuery();
 			return (!resultSet.next());
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 	}
 
 	@Override
 	public User findByLogin(String login) {
-		Connection connection = null;
-		PreparedStatement statement = null;
+		
 		User user = null;
-		try {
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_FIND_BY_LOGIN);
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_FIND_BY_LOGIN);) {
+			
 			statement.setString(1, login);
 			ResultSet resultSet = statement.executeQuery();
 			if (resultSet.next()) {
@@ -165,50 +155,51 @@ public class JdbcUserDAO implements UserDAO {
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
-		}
+		} 
 		return user;
 	}
 
 	@Override
 	public boolean setAdmin(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try { 
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_SET_ADMIN);
-			statement.setInt(1, id);
-			statement.executeUpdate();
+		
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_SET_ADMIN);) { 
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, id);
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e) {
+				connection.rollback();
+				throw new SQLException();
+			}
 			return true;
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
 	}
 
 	@Override
 	public boolean removeAdmin(int id) {
-		Connection connection = null;
-		PreparedStatement statement = null;
-		try { 
-			connection = JdbcDAOFactory.getConnection();
-			statement = connection.prepareStatement(Queries.USER_REMOVE_ADMIN);
-			statement.setInt(1, id);
-			statement.executeUpdate();
+
+		try (Connection connection = JdbcDAOFactory.getConnection();
+			PreparedStatement statement = connection.prepareStatement(Queries.USER_REMOVE_ADMIN);) { 
+			connection.setAutoCommit(false);
+			try {
+				statement.setInt(1, id);
+				statement.executeUpdate();
+				connection.commit();
+			} catch (SQLException e) {
+				connection.rollback();
+				throw new SQLException();
+			}
+			
 			return true;
 		} catch (SQLException e) {
 			logger.log(Level.WARN, LoggerConstants.EXCEPTION_SQL, e);
 			throw new RuntimeException();
-		} finally {
-			JdbcDAOFactory.closeStatement(statement);
-			JdbcDAOFactory.closeConnection(connection);
 		}
-		
 	}
 
 }

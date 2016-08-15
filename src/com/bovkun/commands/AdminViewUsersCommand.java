@@ -17,5 +17,4 @@ public class AdminViewUsersCommand implements Command{
 		request.setAttribute(Constants.USERS, users);
 		return Constants.ADMIN_USERS_EDITOR_PAGE;
 	}
-
 }
